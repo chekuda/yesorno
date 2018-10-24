@@ -1,5 +1,4 @@
 const express = require('express')
-const view = require('./src/server/views/view')
 const routes = require('./src/server/routes/routes')
 
 const app = express()
