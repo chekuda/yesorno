@@ -1,11 +1,12 @@
 const express = require('express')
-const view = require('./src/views')
+const view = require('./src/server/views/view')
+const routes = require('./src/server/routes/routes')
 
 const app = express()
 
 const port = process.env.PORT || 3000
 
-app.get('/', (req, res) => res.send(view()))
+routes(app)
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`)

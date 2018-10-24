@@ -1,4 +1,4 @@
-module.exports = (content = 'Its Running', script = '', store = '', title = 'home') =>
+module.exports = ({ content = 'Its Running', script = '', store = '', title = '' }) =>
   `<!doctype html>
     <html lang="en">
       <head>
