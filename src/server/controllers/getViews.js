@@ -7,3 +7,12 @@ exports.getHome = (req, res) => {
   }
   res.send(view(data))
 }
+
+exports.getAboutUs = (req, res) => {
+  const data = {
+    title: 'about us',
+    content: 'ABOUT US'
+  }
+
+  res.send(view(data))
+}

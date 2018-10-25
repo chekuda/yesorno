@@ -9,5 +9,6 @@ module.exports = ({ content = 'Its Running', script = '', store = '', title = ''
       </head>
       <body>
         <div id="root">${content}</div>
+        <button id="redirect type="button">REDIRECT</button>
       </body>
     </html>`
