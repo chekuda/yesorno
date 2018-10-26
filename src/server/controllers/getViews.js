@@ -1,11 +1,11 @@
-const view = require('../views/view')
+const setViews = require('./setViews')
 
 exports.getHome = (req, res) => {
   const data = {
     title: 'home',
     content: 'HOME PAGE'
   }
-  res.send(view(data))
+  setViews(req, res, data)
 }
 
 exports.getAboutUs = (req, res) => {
@@ -14,5 +14,5 @@ exports.getAboutUs = (req, res) => {
     content: 'ABOUT US'
   }
 
-  res.send(view(data))
+  setViews(req, res, data)
 }

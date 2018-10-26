@@ -1,14 +1,13 @@
-module.exports = ({ content = 'Its Running', script = '', store = '', title = '' }) =>
-  `<!doctype html>
-    <html lang="en">
-      <head>
-        <title>${title}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <script src="main.js"></script>
-      </head>
-      <body>
-        <div id="root">${content}</div>
-        <button id="redirect type="button">REDIRECT</button>
-      </body>
-    </html>`
+const path = require('path')
+const fs = require('fs')
+
+module.exports = ({ content = 'Its Running', store = '', title = '' }) =>
+  new Promise((resolve, reject) => {
+    const indexFile = path.resolve(__dirname, '../../../dist/publicIndex.html')
+
+    fs.readFile(indexFile, 'utf8', (err, data) =>
+      err
+        ? reject(err)
+        : resolve(data.replace('data-content', content).replace('data-title', title))
+    )
+  })

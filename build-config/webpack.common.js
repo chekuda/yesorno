@@ -1,12 +1,9 @@
 const path = require('path')
 const webpack = require('webpack')
+const HTMLWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: path.join(__dirname, '../src/'),
-  output: {
-    path: path.join(__dirname, '../dist'),
-    filename: 'main.js'
-  },
   module: {
     rules: [
       {
@@ -24,6 +21,11 @@ module.exports = {
     extensions: ['.js', '.json', '.jsx']
   },
   plugins: [
+    new HTMLWebpackPlugin({
+      template: path.resolve(__dirname, '../src/index.html'),
+      filename: 'publicIndex.html',
+      inject: 'body'
+    }),
     new webpack.DefinePlugin({
       ENV: JSON.stringify(process.env.ENV)
     })
