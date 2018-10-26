@@ -7,7 +7,12 @@ const app = express()
 
 const port = process.env.PORT || 3000
 
-app.use(express.static(path.join(__dirname, './dist')));
+if(process.env.ENV !== 'prod') {
+  require('./src/server/middleware').default(app)
+}
+
+// User this ./dist because the publicPath is required in expressMiddleware
+app.use('/dist', express.static(path.join(__dirname, './dist')))
 
 routes(app)
 
