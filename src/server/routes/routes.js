@@ -1,4 +1,4 @@
-import { getAppRouter } from '../controllers/controlViews/getViews'
+import { getAppRouter } from '../controllers/viewsController'
 
 export default app => {
   app.route('/*')

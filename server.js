@@ -1,7 +1,7 @@
 import express from 'express'
 import path from 'path'
 
-import routes from './src/server/routes/routes'
+import routes from './src/server/routes'
 
 const app = express()
 

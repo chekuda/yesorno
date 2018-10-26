@@ -1,6 +1,12 @@
 import HTMLTransformer from '../../helpers/HTMLTransformer'
+import ssr from '../ssr'
 
-export default (_, res, data) => {
+export const getAppRouter = (req, res) => {
+  const data = {
+    title: 'YESORNOT',
+    content: ssr(req)
+  }
+
   HTMLTransformer(data)
     .then(currentView =>
       res.send(currentView))
