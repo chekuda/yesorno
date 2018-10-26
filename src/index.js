@@ -1,14 +1,17 @@
 import React from 'react'
 import { hydrate } from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
 
-import App from './shared'
+import AppRouter from './shared/AppRouter'
 
 const render = Component => {
   hydrate(
-    <Component />,
+    <BrowserRouter>
+      <Component />
+    </BrowserRouter>,
     document.getElementById('root')
   )
 }
 
-render(App)
+render(AppRouter)
 

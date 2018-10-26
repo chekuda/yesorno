@@ -1,9 +1,6 @@
-import { getHome, getAboutUs } from '../controllers/getViews'
+import { getAppRouter } from '../controllers/controlViews/getViews'
 
 export default app => {
-  app.route('/')
-    .get(getHome)
-
-  app.route('/aboutus')
-    .get(getAboutUs)
+  app.route('/*')
+    .get(getAppRouter)
 }

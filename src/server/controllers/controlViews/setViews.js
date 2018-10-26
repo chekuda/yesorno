@@ -1,4 +1,4 @@
-import view from '../views/view'
+import view from '../../views/view'
 
 export default (_, res, data) => {
   view(data)
