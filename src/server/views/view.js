@@ -1,7 +1,7 @@
-const path = require('path')
-const fs = require('fs')
+import path from 'path'
+import fs from 'fs'
 
-module.exports = ({ content = 'Its Running', store = '', title = '' }) =>
+export default ({ content = '', store = '', title = '' }) =>
   new Promise((resolve, reject) => {
     const indexFile = path.resolve(__dirname, '../../../dist/publicIndex.html')
 

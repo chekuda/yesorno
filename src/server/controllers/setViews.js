@@ -1,6 +1,6 @@
-const view = require('../views/view')
+import view from '../views/view'
 
-module.exports = (_, res, data) => {
+export default (_, res, data) => {
   view(data)
     .then(currentView =>
       res.send(currentView))

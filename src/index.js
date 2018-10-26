@@ -1,6 +1,14 @@
-import { test } from './shared'
+import React from 'react'
+import { hydrate } from 'react-dom'
 
-window.onload = () => {
-  test()
-  console.log('main')
+import App from './shared'
+
+const render = Component => {
+  hydrate(
+    <Component />,
+    document.getElementById('root')
+  )
 }
+
+render(App)
+

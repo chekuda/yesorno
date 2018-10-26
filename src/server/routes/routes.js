@@ -1,9 +1,9 @@
-const getViews = require('../controllers/getViews')
+import { getHome, getAboutUs } from '../controllers/getViews'
 
-module.exports = app => {
+export default app => {
   app.route('/')
-    .get(getViews.getHome)
+    .get(getHome)
 
   app.route('/aboutus')
-    .get(getViews.getAboutUs)
+    .get(getAboutUs)
 }
