@@ -1,7 +1,7 @@
-import view from '../../views/view'
+import HTMLTransformer from '../../helpers/HTMLTransformer'
 
 export default (_, res, data) => {
-  view(data)
+  HTMLTransformer(data)
     .then(currentView =>
       res.send(currentView))
     .catch(err =>
