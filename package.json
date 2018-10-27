@@ -7,15 +7,16 @@
     "build": "ENV=dev webpack",
     "start:dev": "ENV=dev node index.js",
     "start:prod": "ENV=prod npm run build && ENV=prod node index.js",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
-    "babel-loader": "^8.0.4",
     "babel-core": "^7.0.0-bridge.0",
+    "babel-loader": "^8.0.4",
     "css-loader": "^1.0.0",
     "express": "^4.16.4",
     "sass-loader": "^7.1.0",
