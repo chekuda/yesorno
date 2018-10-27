@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtraPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   name: 'client',
@@ -14,6 +15,15 @@ module.exports = {
             loader: 'babel-loader'
           }
         ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'extracted-loader',
+          MiniCssExtraPlugin.loader,
+          'css-loader',
+          'sass-loader?sourceMap'
+        ]
       }
     ]
   },
@@ -26,6 +36,9 @@ module.exports = {
       filename: 'publicIndex.html',
       alwaysWriteToDisk: true, // in order to make expressWebpackMiddleware works
       inject: 'body'
+    }),
+    new MiniCssExtraPlugin({
+      filename: '[name].css'
     }),
     new webpack.DefinePlugin({
       ENV: JSON.stringify(process.env.ENV)

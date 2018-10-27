@@ -6,16 +6,17 @@ import clienWebpack from '../../../webpack.config'
 import serverWebpack from '../../../webpack.config.server'
 
 export default app => {
-  const compiler = webpack([clienWebpack, serverWebpack])
+  const clientConfig = clienWebpack()
+  const compiler = webpack([clienWebpack(), serverWebpack])
   const clientCompiler = compiler.compilers.find(({ name }) => name === 'client') // Config HMR
 
   app.use(webpackMiddleware(compiler, {
-    filename: clienWebpack.output.filename,
+    filename: clientConfig.output.filename,
     stats: {
       colors: true
     },
     hot: true, // Enable HMR
-    publicPath: clienWebpack.output.publicPath,
+    publicPath: clientConfig.output.publicPath,
     serverSideRender: true
   }))
 

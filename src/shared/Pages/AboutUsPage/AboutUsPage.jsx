@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 
+if(process.browser) {
+  require('./AboutUsPage.scss')
+}
+
 class AboutUsPage extends Component {
   render(){
-    return <div>About Us Page 2</div>
+    return <div className='aboutus-container'>About Us Page </div>
   }
 }
 

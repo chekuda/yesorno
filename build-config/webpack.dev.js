@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin') // Save HTML in the dist to be readable for fs module
 
 module.exports = {
   entry: [
@@ -14,6 +15,9 @@ module.exports = {
   },
   mode: 'development',
   plugins: [
+    new HtmlWebpackHarddiskPlugin({
+      outputPath: path.join(__dirname, '../dist')
+    }),
     new webpack.HotModuleReplacementPlugin()
   ]
 }

@@ -1,4 +1,5 @@
 import path from 'path'
+import webpack from 'webpack'
 import nodeExternals from 'webpack-node-externals' // Dont run all the innecesary node_modules in node
 
 export default {
@@ -23,6 +24,9 @@ export default {
     ]
   },
   target: 'node',
+  plugins: [
+    new webpack.IgnorePlugin(/\.s?css$/)
+  ],
   resolve: {
     extensions: ['.js', '.json', '.jsx'] //Add this in order to dont indicate the extension when import it
   }
