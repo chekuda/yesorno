@@ -1,0 +1,19 @@
+@import '../../../styles/variables.scss';
+
+.card-container {
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 80px;
+  background: $darkGreen;
+  text-align: center;
+  box-shadow: 0 1px 4px $black;
+
+  .content {
+    color: $yellow;
+    font-size: 19px;
+  }
+}

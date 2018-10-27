@@ -6,11 +6,11 @@ if(process.browser) {
 
 const Header = () => {
   return (
-    <div className='Header'>
+    <header className='header'>
       <div className='logo'>
         Yes-Or-No
       </div>
-    </div>
+    </header>
   )
 }
 
