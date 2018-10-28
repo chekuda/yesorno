@@ -2,9 +2,12 @@ import HTMLTransformer from '../../helpers/HTMLTransformer'
 import ssr from '../ssr'
 
 export const getAppRouter = (req, res) => {
+  const { content, preloadState } = ssr(req)
+  
   const data = {
     title: 'YESORNOT',
-    content: ssr(req)
+    content,
+    preloadState
   }
 
   HTMLTransformer(data)
