@@ -1,11 +1,12 @@
 @import '../../../styles/variables.scss';
 
 .card-container {
+  position: relative;
   padding: 10px;
   margin: 10px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  flex-direction: column;
   width: 90%;
   height: 80px;
   background: $darkGreen;
@@ -15,5 +16,28 @@
   .content {
     color: $yellow;
     font-size: 19px;
+  }
+  .action {
+    position: absolute;
+    bottom: 10px;
+    cursor: pointer;
+
+    &.yes {
+      left: 10px;
+      transition: transform .4s ease-in-out;
+      
+      &:hover{
+        transform: scale(1.2, 1.2)
+      }
+    }
+
+    &.no {
+      right: 10px;
+      transition: transform .4s ease-in-out;
+      
+      &:hover{
+        transform: scale(1.2, 1.2)
+      }
+    }
   }
 }

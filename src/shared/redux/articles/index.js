@@ -1,1 +1,1 @@
-export { default } from './articles'
+export { default, voteArticle } from './articles'

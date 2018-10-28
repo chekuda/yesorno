@@ -24,6 +24,17 @@ module.exports = {
           'css-loader',
           'sass-loader?sourceMap'
         ]
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+            }
+          }
+        ]
       }
     ]
   },

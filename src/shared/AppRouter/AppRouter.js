@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { Route, Switch } from 'react-router-dom'
 
-import HomePage from '../Pages/HomePage'
+import HomeContainer from '../Containers/HomeContainer'
 import AboutUsPage from '../Pages/AboutUsPage'
 import Header from '../Components/Header'
 
@@ -13,7 +13,7 @@ const AppRouter = () =>
   <Fragment>
     <Header />
     <Switch>
-      <Route exact path='/' component={HomePage}/>
+      <Route exact path='/' component={HomeContainer}/>
       <Route exact path='/aboutus' component={AboutUsPage}/>
     </Switch>
   </Fragment>
