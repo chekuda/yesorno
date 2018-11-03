@@ -4,11 +4,10 @@
   position: relative;
   padding: 10px;
   margin: 10px;
-  width: 90%;
   height: 80px;
   background: $darkGreen;
   text-align: center;
-  box-shadow: 0 1px 4px $black;
+  box-shadow: 0 1px 4px $shadow;
 
   .card-content {
     color: $yellow;
@@ -17,7 +16,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    text-shadow: 2px 2px $black;
+    text-shadow: 2px 2px $shadow;
   }
   .card-actions-section {
     height: 25px;
