@@ -4,9 +4,6 @@
   position: relative;
   padding: 10px;
   margin: 10px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
   width: 90%;
   height: 80px;
   background: $darkGreen;
@@ -16,25 +13,31 @@
   .content {
     color: $yellow;
     font-size: 19px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 2px 2px $black;
   }
-  .action {
-    position: absolute;
-    bottom: 10px;
-    cursor: pointer;
+  .card-section {
+    height: 25px;
+    display: flex;
+    justify-content: space-between;
 
-    &.yes {
-      left: 10px;
+    .action {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
       transition: transform .4s ease-in-out;
-      
-      &:hover{
-        transform: scale(1.2, 1.2)
+
+      .votes {
+        margin: 0 5px;
+        color: $white;
+        align-self: flex-end;
+        font-size: 13px;
       }
-    }
 
-    &.no {
-      right: 10px;
-      transition: transform .4s ease-in-out;
-      
       &:hover{
         transform: scale(1.2, 1.2)
       }
