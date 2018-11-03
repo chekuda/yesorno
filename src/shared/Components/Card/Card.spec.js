@@ -13,42 +13,45 @@ describe('Card', () => {
     })
     it('should render the content', () => {
       const component = shallow(<Card {...props}/>)
-      const content = component.find('.content')
+      const content = component.find('.card-content')
       
       expect(content.length).toBe(1)
       expect(content.text()).toBe(props.content)
     })
-    describe('when trying to render the action buttons', () => {
+    describe('when trying to render the actions section', () => {
       describe('and the callback handleOnClick is passed', () => {
         const newProps = {
           ...props,
           handleOnClick: jest.fn()
         }
-        const component = shallow(<Card {...newProps}/>)
-        it('should render the yes action', () => {
-          const yesAction = component.find('.action.yes')
-          
-          expect(yesAction.length).toBe(1)
-          expect(yesAction.props().children.type).toBe('img')
+        it('should render the two actions', () => {
+          const component = shallow(<Card {...newProps}/>)
+          const actions = component.find('.action')
+
+          expect(actions.length).toBe(2)
         })
-        it('should render the no action', () => {
-          const yesAction = component.find('.action.no')
-          
-          expect(yesAction.length).toBe(1)
-          expect(yesAction.props().children.type).toBe('img')
+        describe('and the votes are passed', () => {
+          const propsWithVotes = {
+            ...newProps,
+            yes: 10,
+            no: 0
+          }
+          it('should render the icon and the vote section', () => {
+            const component = shallow(<Card {...propsWithVotes}/>)
+            const actions = component.find('.action')
+
+            actions.forEach((action) => {
+              expect(action.children().length).toBe(2)
+            })
+          })
         })
       })
       describe('and the callback handleOnClick is not passed', () => {
         const component = shallow(<Card {...props}/>)
-        it('should not render the yes action', () => {
-          const yesAction = component.find('.action.yes')
-          
-          expect(yesAction.length).toBe(0)
-        })
-        it('should not render the no action', () => {
-          const yesAction = component.find('.action.no')
-          
-          expect(yesAction.length).toBe(0)
+        it('should not render any action', () => {
+          const actions = component.find('.action')
+
+          expect(actions.length).toBe(0)
         })
       })
     })
@@ -63,16 +66,16 @@ describe('Card', () => {
       })
       describe('and action is yes', () => {
         it('should pass the id of the article and the action type', () => {
-          const yesAction = component.find('.action.yes')
-          yesAction.simulate('click')
+          const action = component.find('.action.yes')
+          action.simulate('click')
 
           expect(newProps.handleOnClick).toBeCalledWith(props.id, 'yes')
         })
       })
       describe('and action is no', () => {
         it('should pass the id of the article and the action type', () => {
-          const yesAction = component.find('.action.no')
-          yesAction.simulate('click')
+          const action = component.find('.action.no')
+          action.simulate('click')
 
           expect(newProps.handleOnClick).toBeCalledWith(props.id, 'no')
         })

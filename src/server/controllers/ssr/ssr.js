@@ -13,7 +13,9 @@ export default req => {
     articles: {
       list: [
         { id: '0', content: 'Is fish meet?', yes: 10, no: 10 },
-        { id: '1', content: 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia', yes: 10, no: 10 }
+        { id: '1', content: 'Are you living in a Truman Show?', yes: 0, no: 0 },
+        { id: '2', content: 'Would you eat dog', yes: 10, no: 10 },
+        { id: '3', content: 'Would you eat dog', yes: 5, no: 1 }
       ]
     }
   }

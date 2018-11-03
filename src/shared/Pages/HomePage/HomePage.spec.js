@@ -11,7 +11,7 @@ describe('HomePage',() => {
       expect(shallow(<HomePage />).length).toBe(1)
     })
     describe('when articles are received', () => {
-      it('should render a Card per article received', () => {
+      it('should render a FadeAnimation with Card per article received', () => {
         const newProps = {
           ...props,
           articles: [
@@ -20,20 +20,20 @@ describe('HomePage',() => {
           ]
         }
         const component = shallow(<HomePage {...newProps} />)
-        const cards = component.find('Card')
+        const fadeAnimation = component.find('FadeAnimation')
 
-        expect(cards.length).toBe(newProps.articles.length)
-        cards.forEach((card, index) => {
-          expect(card.props().content).toEqual(newProps.articles[index].content)
-          expect(card.props().handleOnClick).toEqual(newProps.handleOnClick)
+        expect(fadeAnimation.length).toBe(newProps.articles.length)
+        fadeAnimation.forEach((fade, index) => {
+          expect(fade.children().props().content).toEqual(newProps.articles[index].content)
+          expect(fade.children().props().handleOnClick).toEqual(newProps.handleOnClick)
         })
       })
     })
     describe('when articles are not received', () => {
-      it('should not render any Card ', () => {
+      it('should not render any fadeAnimation ', () => {
         const component = shallow(<HomePage />)
 
-        expect(component.find('Card').length).toBe(0)
+        expect(component.find('FadeAnimation').length).toBe(0)
       })
     })
   })

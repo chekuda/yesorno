@@ -23,12 +23,11 @@ const reducer = (state = {}, action = {}) => {
     case SAVE_ARTICLES:
       return { ...state, list: payload.articles }
     case VOTE_ARTICLE:
-      const currentVote = payload.actionType === 'yes' ? 1 : -1
       return {
         ...state,
         list: state.list.map(ele => {
           return ele.id === payload.id
-            ? { ...ele, [payload.actionType]: ele[payload.actionType] + currentVote }
+            ? { ...ele, [payload.actionType]: ++ele[payload.actionType] }
             : ele
         })
       }

@@ -1,6 +1,7 @@
 import React  from 'react'
 
 import Card from '../../Components/Card'
+import FadeAnimation from '../../Components/FadeAnimation'
 
 if(process.browser) {
   require('./HomePage.scss')
@@ -11,11 +12,12 @@ const HomePage = ({ articles = [], handleOnClick }) => {
     <div className="home-container">
       {
         articles.map(article =>
-          <Card
-            key={article.id}
-            {...article}
-            handleOnClick={handleOnClick}
-          />
+          <FadeAnimation key={article.id} types={['fadeIn', 'fadeUp']} time={'one'}>
+            <Card
+              {...article}
+              handleOnClick={handleOnClick}
+            />
+          </FadeAnimation>
         )
       }
     </div>

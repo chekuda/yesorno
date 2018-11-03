@@ -7,18 +7,18 @@ if(process.browser) {
 const Card = ({ content, yes, no, handleOnClick, id }) => {
   return (
     <div className='card-container'>
-      <div className='content'>
+      <div className='card-content'>
         { content }
       </div>
       {
         handleOnClick &&
-          <div className='card-section'>
-            <div className='action' onClick={() => handleOnClick(id, 'yes')}>
+          <div className='card-actions-section'>
+            <div className='action yes' onClick={() => handleOnClick(id, 'yes')}>
               <img src='/assets/icons/smile.svg' width='25' height="25" />
-              { yes && <p className='votes'>{yes}</p> }
+              { typeof yes !== undefined && <p className='votes'>{yes}</p> }
             </div>
-            <div className='action' onClick={() => handleOnClick(id, 'no')}>
-              { no && <p className='votes'>{no}</p> }
+            <div className='action no' onClick={() => handleOnClick(id, 'no')}>
+              { typeof yes !== undefined && <p className='votes'>{no}</p> }
               <img src='/assets/icons/frown-open.svg' width='25' height="25" />
             </div>
         </div>
