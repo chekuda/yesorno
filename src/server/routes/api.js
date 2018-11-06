@@ -1,5 +1,5 @@
 import { createNewUser } from '../controllers/api/userControllers'
-import { createNewPost } from '../controllers/api/postControllers'
+import { createNewPost, getPostList } from '../controllers/api/postControllers'
 
 export const api = app => {
   app.route('/api/createnewuser')
@@ -7,4 +7,7 @@ export const api = app => {
 
   app.route('/api/createnewpost')
     .get(createNewPost)
+
+  app.route('/api/getpostlist')
+    .get(getPostList)
 }

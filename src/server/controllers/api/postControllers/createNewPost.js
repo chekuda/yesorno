@@ -3,7 +3,7 @@ import { createPostInstance } from './createPostInstance'
 export const createNewPost = async (_, res) => {
   try {
       const postInstance = createPostInstance({
-        content: 'test1',
+        content: 'Are you living in a Truman Show?',
       })
 
       res.status(200).send(await postInstance.save())
