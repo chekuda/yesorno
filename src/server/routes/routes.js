@@ -1,6 +1,8 @@
-import { getAppRouter } from '../controllers/viewsController'
+import { api, views } from './index'
 
 export default app => {
-  app.route('/*')
-    .get(getAppRouter)
+  // API
+  api(app)
+  // VIEWS
+  views(app)
 }

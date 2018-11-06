@@ -4,9 +4,9 @@ import { StaticRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 
-import rootReducers from '../../../shared/redux/rootReducers'
+import rootReducers from '../../../../shared/redux/rootReducers'
 
-import AppRouter from '../../../shared/AppRouter'
+import AppRouter from '../../../../shared/AppRouter'
 
 export default req => {
   const initialState = {
