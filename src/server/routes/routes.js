@@ -1,8 +1,6 @@
-import { api, views } from './index'
+import { views } from './index'
 
 export default app => {
-  // API
-  api(app)
   // VIEWS
   views(app)
 }

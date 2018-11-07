@@ -6,9 +6,9 @@ export const createNewPost = async (_, res) => {
         content: 'Are you living in a Truman Show?',
       })
 
-      res.status(200).send(await postInstance.save())
+      return res.send(await postInstance.save())
   } catch (err) {
     console.log('ERROR STATUS>>>>>>', err.message)
-    res.status(500).send(err.message)
+    return res.status(500).send(err.message)
   }
 }

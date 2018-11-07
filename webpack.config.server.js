@@ -3,7 +3,7 @@ import webpack from 'webpack'
 import nodeExternals from 'webpack-node-externals' // Dont run all the innecesary node_modules in node
 
 export default {
-  entry: path.join(__dirname, './index.js'),
+  entry: path.join(__dirname, './src/server'),
   externals: [nodeExternals()],
   mode: 'development',
   output: {

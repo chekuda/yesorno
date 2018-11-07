@@ -1,25 +1,22 @@
 import express from 'express'
 import path from 'path'
+import fetch from 'node-fetch'
 
-import dbConnection from './src/server/database/connection'
-import routes from './src/server/routes'
+import routes from './routes'
 
 const app = express()
 
 const port = process.env.PORT || 3000
-
-// Connect to DB
-dbConnection()
-
 if(process.env.ENV !== 'prod') {
-  require('./src/server/middleware/expressMiddleware').default(app)
+  require('./middleware/expressMiddleware').default(app)
 }
 // Assets
-app.use('/assets', express.static(path.join(__dirname, './assets')))
+app.use('/assets', express.static(path.resolve(__dirname, '../../assets')))
 
 // User this ./dist because the publicPath is required in expressMiddleware
-app.use('/dist', express.static(path.join(__dirname, './dist')))
+app.use('/dist', express.static(path.resolve(__dirname, '../../dist')))
 
+//Routes
 routes(app)
 
 // Catch any error

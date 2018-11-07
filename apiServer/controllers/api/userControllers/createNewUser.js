@@ -6,9 +6,9 @@ export const createNewUser = async (_, res) => {
         password: 'test1',
       })
 
-      res.status(200).send(await userInstance.save())
+      return res.send(await userInstance.save())
   } catch (err) {
     console.log('ERROR STATUS>>>>>>', err.message)
-    res.status(500).send(err.message)
+    return res.status(500).send(err.message)
   }
 }
