@@ -8,15 +8,15 @@ import { createStore } from 'redux'
 import AppRouter from './shared/AppRouter'
 import rootReducers from './shared/redux/rootReducers'
 
+const preloadState = window.__PRELOAD__STATE
+
+const store = createStore(
+  rootReducers,
+  preloadState,
+  window && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+
 const render = Component => {
-  const preloadState = window.__PRELOAD__STATE
-
-  const store = createStore(
-    rootReducers,
-    preloadState,
-    window && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
-
   hydrate(
     <AppContainer>
       <Provider store={store}>
