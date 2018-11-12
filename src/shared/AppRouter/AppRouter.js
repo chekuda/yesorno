@@ -1,9 +1,7 @@
 import React, { Fragment } from 'react'
 import { Route, Switch } from 'react-router-dom'
 
-import HomeContainer from '../Containers/HomeContainer'
-import AboutUsPage from '../Pages/AboutUsPage'
-import AddArticle from '../Pages/AddArticle'
+import routes from './routes'
 import Header from '../Components/Header'
 
 if(process.browser) {
@@ -14,10 +12,15 @@ const AppRouter = () =>
   <Fragment>
     <Header />
     <Switch>
-      <Route exact path='/' component={HomeContainer}/>
-      <Route exact path='/aboutus' component={AboutUsPage}/>
-      <Route exact path='/addarticle' component={AddArticle}/>
+      { routes.map(({ Component, path, needs }, index) =>
+        <Route
+          key={index}
+          exact
+          path={path}
+          render={() => <Component needs={needs}/>}
+        />)
+      }
     </Switch>
   </Fragment>
 
-  export default AppRouter
+export default AppRouter

@@ -1,5 +1,4 @@
 import express from 'express'
-import path from 'path'
 
 import dbConnection from './database/connection'
 import routes from './routes'
@@ -9,7 +8,11 @@ const app = express()
 const port = process.env.PORT || 3001
 
 // Connect to DB
-dbConnection()
+const dbUrl = process.env.ENV !== 'prod'
+? process.env.LOCAL_DB_URL
+: process.env.REMOTE_DB_URL
+
+dbConnection(dbUrl)
 
 //Routes
 routes(app)

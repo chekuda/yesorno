@@ -1,8 +1,8 @@
 import HTMLTransformer from '../../helpers/HTMLTransformer'
 import ssr from './ssr'
 
-export const getAppRouter = (req, res) => {
-  const { content, preloadState } = ssr(req)
+export const getAppRouter = async (req, res) => {
+  const { content, preloadState } = await ssr(req)
 
   const data = {
     title: 'YESORNOT',

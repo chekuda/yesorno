@@ -21,16 +21,13 @@ const reducer = (state = {}, action = {}) => {
 
   switch(type) {
     case SAVE_ARTICLES:
-      return { ...state, list: payload.articles }
+      return state.concat(payload.articles)
     case VOTE_ARTICLE:
-      return {
-        ...state,
-        list: state.list.map(ele => {
-          return ele.id === payload.id
+      return state.map(ele => {
+          return ele._id === payload.id
             ? { ...ele, [payload.actionType]: ++ele[payload.actionType] }
             : ele
         })
-      }
     default:
       return state
   }

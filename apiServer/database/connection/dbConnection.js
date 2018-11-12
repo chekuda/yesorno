@@ -1,8 +1,8 @@
 import mongoose from 'mongoose'
 
-export default () => {
+export default (url) => {
   mongoose.connect(
-    process.env.REMOTE_DB_URL,
+    url,
     { useNewUrlParser: true }
   )
 

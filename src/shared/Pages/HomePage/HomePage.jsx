@@ -7,12 +7,12 @@ if(process.browser) {
   require('./HomePage.scss')
 }
 
-const HomePage = ({ articles = [], handleOnClick }) => {
+const HomePage = ({ articles = [], handleOnClick } = {}) => {
   return (
     <div className="home-container">
       {
         articles.map(article =>
-          <FadeAnimation key={article.id} types={['fadeIn', 'fadeUp']} time={'one'}>
+          <FadeAnimation key={article._id} types={['fadeIn', 'fadeUp']} time={'one'}>
             <Card
               {...article}
               handleOnClick={handleOnClick}

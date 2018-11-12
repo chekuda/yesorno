@@ -6,6 +6,8 @@ import HomePage from '../../Pages/HomePage'
 import { voteArticle } from '../../redux/articles'
 
 export class HomeContainer extends Component {
+  static apiUrl = 'http://localhost:3001/api/getpostlist'
+
   voteArticle = (id, actionType) => {
     //TODO: Fetch
     const { voteArticle } = this.props
@@ -28,6 +30,6 @@ export class HomeContainer extends Component {
 }
 
 export default connect(
-  state => ({ articles: state.articles.list }),
+  state => ({ articles: state.articles }),
   dispatch =>  bindActionCreators({ voteArticle }, dispatch)
 )(HomeContainer)
