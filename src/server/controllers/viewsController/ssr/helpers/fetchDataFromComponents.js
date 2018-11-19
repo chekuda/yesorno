@@ -3,13 +3,13 @@ import fetch from 'node-fetch'
 import initialState from '../../../../../shared/redux/initialState'
 import routes from '../../../../../shared/AppRouter/routes'
 
-export const fetchData = async (path) => {
+export const fetchDataFromComponents = async (path) => {
   try {
     const { apiUrl, initialize} = routes.find(route => route.path === path)
 
     if(!apiUrl || !initialize) {
       return {
-        initialState
+        ...initialState
       }
     }
 

@@ -8,10 +8,10 @@ import rootReducers from '../../../../shared/redux/rootReducers'
 
 import AppRouter from '../../../../shared/AppRouter'
 
-import { fetchData } from './helpers'
+import { fetchDataFromComponents } from './helpers'
 
 export default async req => {
-    const initialState = await fetchData(req.url)
+    const initialState = await fetchDataFromComponents(req.url)
     const store = createStore(
       rootReducers,
       initialState
