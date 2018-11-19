@@ -1,1 +1,6 @@
-export { default, voteArticle } from './articles'
+export {
+  default,
+  voteArticle,
+  saveArticles,
+  fetchArticles
+} from './articles'

@@ -1,17 +1,30 @@
 import React from 'react'
 import { renderToString } from 'react-dom/server'
-import { StaticRouter } from 'react-router-dom'
+import { StaticRouter, matchPath } from 'react-router'
 import { Provider } from 'react-redux'
 
 import configureStore from '../../../../shared/redux/configureStore'
 
 import AppRouter from '../../../../shared/AppRouter'
+import routes from '../../../../shared/AppRouter/routes'
 
-import { fetchDataFromComponents } from './helpers'
+const getNeedsByMatchedUrl = (store, url) => (
+  routes.reduce((matches, route) => {
+    const match = matchPath(url, route)
+
+    if (match && route.Component.fetchData) {
+      matches.push(route.Component.fetchData(store))
+    }
+
+    return matches
+  }, [])
+)
 
 export default async req => {
-    const initialState = await fetchDataFromComponents(req.url)
-    const store = configureStore(initialState)
+    const store = configureStore({})
+    const promises = getNeedsByMatchedUrl(store, req.url)
+
+    await Promise.all(promises)
 
     const content = renderToString(
       <Provider store={store}>

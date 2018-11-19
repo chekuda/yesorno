@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+import 'isomorphic-fetch'
 
 import initialState from '../../../../../shared/redux/initialState'
 import routes from '../../../../../shared/AppRouter/routes'

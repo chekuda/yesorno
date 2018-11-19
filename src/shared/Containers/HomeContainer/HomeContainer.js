@@ -3,13 +3,14 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import HomePage from '../../Pages/HomePage'
-import { voteArticle } from '../../redux/articles'
+import { voteArticle, fetchArticles } from '../../redux/articles'
 
 export class HomeContainer extends Component {
-  static apiUrl = 'http://localhost:3001/api/getpostlist'
+  static fetchData(store){
+    return store.dispatch(fetchArticles())
+  }
 
   voteArticle = (id, actionType) => {
-    //TODO: Fetch
     const { voteArticle } = this.props
 
     voteArticle(id, actionType)
@@ -31,5 +32,5 @@ export class HomeContainer extends Component {
 
 export default connect(
   state => ({ articles: state.articles }),
-  dispatch =>  bindActionCreators({ voteArticle }, dispatch)
+  dispatch =>  bindActionCreators({ voteArticle, fetchArticles }, dispatch)
 )(HomeContainer)

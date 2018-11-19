@@ -1,3 +1,5 @@
+import 'isomorphic-fetch'
+
 const SAVE_ARTICLES = 'ARTICLES/SAVE_ARTICLES'
 const VOTE_ARTICLE = 'ARTICLES/VOTE_ARTICLE'
 
@@ -16,7 +18,15 @@ export const voteArticle = (id, actionType) => ({
   }
 })
 
-const reducer = (state = {}, action = {}) => {
+export const fetchArticles = () => dispatch => {
+  return fetch('http://localhost:3001/api/getpostlist')
+    .then(res => res.json())
+    .then(articles => {
+      dispatch(saveArticles(articles))
+    })
+}
+
+const reducer = (state = [], action = {}) => {
   const { type, payload } = action
 
   switch(type) {
