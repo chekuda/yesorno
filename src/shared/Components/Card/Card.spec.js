@@ -5,8 +5,8 @@ import Card from './Card'
 
 describe('Card', () => {
   describe('given Card component', () => {
-    const props = { content: 'dummyContent', id: 'dummyId' }
-    
+    const props = { content: 'dummyContent', _id: 'dummyId' }
+
     it('should render Card component', () => {
       const component = shallow(<Card {...props}/>)
       expect(component.length).toBe(1)
@@ -69,7 +69,7 @@ describe('Card', () => {
           const action = component.find('.action.yes')
           action.simulate('click')
 
-          expect(newProps.handleOnClick).toBeCalledWith(props.id, 'yes')
+          expect(newProps.handleOnClick).toBeCalledWith(props._id, 'yes')
         })
       })
       describe('and action is no', () => {
@@ -77,7 +77,7 @@ describe('Card', () => {
           const action = component.find('.action.no')
           action.simulate('click')
 
-          expect(newProps.handleOnClick).toBeCalledWith(props.id, 'no')
+          expect(newProps.handleOnClick).toBeCalledWith(props._id, 'no')
         })
       })
     })
