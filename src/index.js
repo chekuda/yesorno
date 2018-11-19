@@ -3,18 +3,11 @@ import { hydrate } from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import { AppContainer } from 'react-hot-loader'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
 
 import AppRouter from './shared/AppRouter'
-import rootReducers from './shared/redux/rootReducers'
+import configureStore from './shared/redux/configureStore'
 
-const preloadState = window.__PRELOAD__STATE
-
-const store = createStore(
-  rootReducers,
-  preloadState,
-  window && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-)
+const store = configureStore(window.__PRELOAD__STATE)
 
 const render = Component => {
   hydrate(
