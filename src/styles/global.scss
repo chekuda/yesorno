@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Krub');
+@import "mixins.scss";
+
+@import "fonts.scss";
 
 @import "variables.scss";
 
-@import 'main.scss';
+@import "main.scss";
