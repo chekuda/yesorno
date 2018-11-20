@@ -1,9 +1,18 @@
 @font-face {
   font-family: "KrubRegular";
-  src: url("/assets/fonts/Krub-Italic.ttf") format("ttf");
+  src:  url("/assets/fonts/Krub-Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "KrubBold";
-  src: url("/assets/fonts/Krub-Bold.ttf") format("ttf");
+  src:  url("/assets/fonts/Krub-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "OswaldRegular";
+  src:  url("/assets/fonts/Oswald-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "ShadowsIntoLight";
+  src:  url("/assets/fonts/ShadowsIntoLight.ttf") format("truetype");
 }
