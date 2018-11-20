@@ -11,16 +11,18 @@ if(process.browser) {
 const AppRouter = () =>
   <Fragment>
     <Header />
-    <Switch>
-      { routes.map(({ Component, path, needs }, index) =>
-        <Route
-          key={index}
-          exact
-          path={path}
-          render={() => <Component needs={needs}/>}
-        />)
-      }
-    </Switch>
+    <div className='app-container'>
+      <Switch>
+        { routes.map(({ Component, path, needs }, index) =>
+          <Route
+            key={index}
+            exact
+            path={path}
+            render={() => <Component needs={needs}/>}
+          />)
+        }
+      </Switch>
+    </div>
   </Fragment>
 
 export default AppRouter

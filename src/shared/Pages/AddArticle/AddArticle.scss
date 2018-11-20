@@ -3,7 +3,7 @@
 
 .addArticle-container {
   margin: 100px auto;
-  max-width: 370px;
+  max-width: 300px;
   .title {
     width: 100%;
     text-align: center;
@@ -30,8 +30,8 @@
   }
 }
 
-@include breakpoint(phone-portrait-small) {
+@include breakpoint(hone-portrait-large) {
   .addArticle-container {
-    max-width: 300px;
+    max-width: 370px;
   }
 }

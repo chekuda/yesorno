@@ -1,9 +1,21 @@
+@import '../../../styles/mixins.scss';
+
 .home-container {
   margin: 10px 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+
   .fade {
-    width: 100%;
+    flex-basis: 100%;
+  }
+}
+
+@include breakpoint(large-desktop) {
+  .home-container {
+    flex-wrap: wrap;
+    flex-direction: row;
+    .fade {
+      flex-basis: 50%;
+    }
   }
 }
