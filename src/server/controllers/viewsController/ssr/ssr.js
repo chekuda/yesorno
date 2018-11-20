@@ -21,19 +21,19 @@ const getNeedsByMatchedUrl = (store, url) => (
 )
 
 export default async req => {
-    const store = configureStore({})
-    const promises = getNeedsByMatchedUrl(store, req.url)
+  const store = configureStore({}, req)
+  const promises = getNeedsByMatchedUrl(store, req.url)
 
-    await Promise.all(promises)
+  await Promise.all(promises)
 
-    const content = renderToString(
-      <Provider store={store}>
-        <StaticRouter location={req.url} context={{}}>
-          <AppRouter />
-        </StaticRouter>
-      </Provider>
-    )
-    const preloadState = store.getState()
+  const content = renderToString(
+    <Provider store={store}>
+      <StaticRouter location={req.url} context={{}}>
+        <AppRouter />
+      </StaticRouter>
+    </Provider>
+  )
+  const preloadState = store.getState()
 
-    return { content, preloadState }
+  return { content, preloadState }
 }

@@ -53,8 +53,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        ENV: JSON.stringify(process.env.ENV),
-        API_URL: JSON.stringify(process.env.API_URL)
+        ENV: JSON.stringify(process.env.ENV)
       }
     })
   ]

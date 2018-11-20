@@ -18,9 +18,9 @@ dbConnection(dbUrl)
 routes(app)
 
 // Catch any error
-app.use((err, res) => {
-  console.error(err.stack)
-  res.status(500).send('Something broke!')
+app.use((err, req, res, next) => {
+  console.log(err)
+  res.status(500).send('Something broke in my API')
 })
 
 app.listen(port, () => {

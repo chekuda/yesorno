@@ -10,6 +10,14 @@ export class HomeContainer extends Component {
     return store.dispatch(fetchArticles())
   }
 
+  componentDidMount() {
+    const { fetchArticles, articles = [] } = this.props
+
+    if(articles.length === 0) {
+      fetchArticles()
+    }
+  }
+
   voteArticle = (id, actionType) => {
     const { voteArticle } = this.props
 
