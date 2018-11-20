@@ -19,8 +19,7 @@ app.use('/dist', express.static(path.resolve(__dirname, '../../dist')))
 routes(app)
 
 // Catch any error
-app.use((err, res) => {
-  console.error(err.stack)
+app.use((err, req, res, next) => {
   res.status(500).send('Something broke!')
 })
 
