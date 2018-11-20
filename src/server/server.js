@@ -9,6 +9,7 @@ const port = process.env.PORT || 3000
 if(process.env.ENV !== 'prod') {
   require('./middleware/expressMiddleware').default(app)
 }
+
 // Assets
 app.use('/assets', express.static(path.resolve(__dirname, '../../assets')))
 

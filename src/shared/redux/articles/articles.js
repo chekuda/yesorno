@@ -1,5 +1,3 @@
-import 'isomorphic-fetch'
-
 const SAVE_ARTICLES = 'ARTICLES/SAVE_ARTICLES'
 const VOTE_ARTICLE = 'ARTICLES/VOTE_ARTICLE'
 
@@ -18,9 +16,8 @@ export const voteArticle = (id, actionType) => ({
   }
 })
 
-export const fetchArticles = () => dispatch => {
-  return fetch('http://localhost:3001/api/getpostlist')
-    .then(res => res.json())
+export const fetchArticles = () => (dispatch, getState, fetchAPI) => {
+  return fetchAPI('/api/getpostlist')
     .then(articles => {
       dispatch(saveArticles(articles))
     })

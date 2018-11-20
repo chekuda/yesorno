@@ -52,7 +52,10 @@ module.exports = {
       filename: '[name].css'
     }),
     new webpack.DefinePlugin({
-      ENV: JSON.stringify(process.env.ENV)
+      'process.env': {
+        ENV: JSON.stringify(process.env.ENV),
+        API_URL: JSON.stringify(process.env.API_URL)
+      }
     })
   ]
 }
