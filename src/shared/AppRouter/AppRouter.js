@@ -8,21 +8,25 @@ if(process.browser) {
   require('../../styles/global.scss')
 }
 
-const AppRouter = () =>
-  <Fragment>
-    <Header />
-    <div className='app-container'>
-      <Switch>
-        { routes.map(({ Component, path, needs }, index) =>
-          <Route
-            key={index}
-            exact
-            path={path}
-            render={() => <Component needs={needs}/>}
-          />)
-        }
-      </Switch>
-    </div>
-  </Fragment>
+const AppRouter = () => {
+  return (
+    <Fragment>
+      <Header />
+      <div className='app-container'>
+        <Switch>
+            {
+              routes.map(({ Component, path }, index) =>
+                <Route
+                  key={index}
+                  exact
+                  path={path}
+                  component={Component}
+                />)
+            }
+        </Switch>
+      </div>
+    </Fragment>
+  )
+}
 
 export default AppRouter

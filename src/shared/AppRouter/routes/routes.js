@@ -5,16 +5,20 @@ import AddArticle from '../../Pages/AddArticle'
 const routes = [
   {
     Component: HomeContainer,
-    path: '/'
-  },
-  {
-    Component: AboutUsPage,
-    path: '/aboutus'
+    path: '/',
+    exact: true,
+    name: 'Home'
   },
   {
     Component: AddArticle,
-    path: '/addarticle'
+    path: '/addarticle',
+    name: 'Add Article'
   },
+  {
+    Component: AboutUsPage,
+    path: '/aboutus',
+    name: 'Aboutus'
+  }
 ]
 
 export default routes
