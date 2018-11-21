@@ -6,15 +6,20 @@ import { Provider } from 'react-redux'
 
 import AppRouter from './shared/AppRouter'
 import configureStore from './shared/redux/configureStore'
+import { ContextContainer } from './shared/Containers/ContextContainer'
 
-const store = configureStore(window.__PRELOAD__STATE)
+const { store, isDesktop } = window.__PRELOAD__STATE
+
+const preloadState = configureStore(store)
 
 const render = Component => {
   hydrate(
     <AppContainer>
-      <Provider store={store}>
+      <Provider store={preloadState}>
         <BrowserRouter>
-          <Component />
+          <ContextContainer isDesktop={isDesktop}>
+            <Component />
+          </ContextContainer>
         </BrowserRouter>
       </Provider>
     </AppContainer>,

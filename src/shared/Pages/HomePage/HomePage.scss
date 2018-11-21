@@ -10,7 +10,7 @@
   }
 }
 
-@include breakpoint(large-desktop) {
+@include breakpoint(desktop) {
   .home-container {
     flex-wrap: wrap;
     flex-direction: row;

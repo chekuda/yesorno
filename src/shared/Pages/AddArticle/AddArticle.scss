@@ -30,7 +30,7 @@
   }
 }
 
-@include breakpoint(hone-portrait-large) {
+@include breakpoint(tablet) {
   .addArticle-container {
     max-width: 370px;
   }

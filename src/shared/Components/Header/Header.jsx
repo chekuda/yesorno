@@ -2,27 +2,39 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 import routes from '../../AppRouter/routes'
+import Consumer from '../../Containers/ContextContainer'
 
 if(process.browser) {
   require('./Header.scss')
 }
 
-const Header = () => {
-  return (
-    <header className='header'>
-      <div className='header-content'>
-        <div className='logo'>
-          Yes-Or-No
-        </div>
-        <ul>
+export const HeaderView = ({ context = {} } = {}) =>
+  <header className='header'>
+    <div className='header-content'>
+      {
+        !context.isDesktop &&
+          <img className='header-burger' src='/assets/icons/bars.svg' width='25' height="25" />
+      }
+      <div className='logo'>
+        Yes-Or-No
+      </div>
+      {
+        context.isDesktop && <ul>
           {
             routes.map(({ path, name, exact = false }) =>
-              <NavLink key={name} exact={exact} to={path}>{name}</NavLink>
+              <NavLink className='top-nav' key={name} exact={exact} to={path}>{name}</NavLink>
             )
           }
         </ul>
-      </div>
-    </header>
+      }
+    </div>
+  </header>
+
+const Header = () => {
+  return (
+    <Consumer>
+      { context => <HeaderView context={context} /> }
+    </Consumer>
   )
 }
 

@@ -7,6 +7,7 @@ import configureStore from '../../../../shared/redux/configureStore'
 
 import AppRouter from '../../../../shared/AppRouter'
 import routes from '../../../../shared/AppRouter/routes'
+import { ContextContainer } from '../../../../shared/Containers/ContextContainer'
 
 const getNeedsByMatchedUrl = (store, url) => (
   routes.reduce((matches, route) => {
@@ -20,7 +21,15 @@ const getNeedsByMatchedUrl = (store, url) => (
   }, [])
 )
 
+const getDevice = userAgent => {
+  const rgxMobile = new RegExp('Mobile')
+
+  return !rgxMobile.test(userAgent)
+}
+
 export default async req => {
+  const isDesktop = req.headers['user-agent'] && getDevice(req.headers['user-agent'])
+
   const store = configureStore({}, req)
   const promises = getNeedsByMatchedUrl(store, req.url)
 
@@ -29,11 +38,13 @@ export default async req => {
   const content = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.url} context={{}}>
-        <AppRouter />
+        <ContextContainer isDesktop={isDesktop}>
+          <AppRouter />
+        </ContextContainer>
       </StaticRouter>
     </Provider>
   )
-  const preloadState = store.getState()
+  const preloadState = { store: store.getState(), isDesktop }
 
   return { content, preloadState }
 }
