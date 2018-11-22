@@ -23,8 +23,13 @@
     .header-burger {
       margin: 0 20px;
       cursor: pointer;
+      transition: transform .5s ease-in-out;
+
+      &.rotate {
+        transform: rotate(-90deg)
+      }
     }
-    ul {
+    .top-nav {
       margin: 0 10px 0 0;
       a {
         display: inline-block;

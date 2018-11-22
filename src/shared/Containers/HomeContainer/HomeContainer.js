@@ -24,10 +24,11 @@ export class HomeContainer extends Component {
     voteArticle(id, actionType)
   }
   render() {
+    const { articles = [] } = this.props
     return (
       <div>
         {
-          this.props.articles &&
+          articles.length &&
             <HomePage
               handleOnClick={this.voteArticle}
               articles={this.props.articles}

@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { Route, Switch } from 'react-router-dom'
 
 import routes from './routes'
-import Header from '../Components/Header'
+import HeaderContainer from '../Containers/HeaderContainer'
 
 if(process.browser) {
   require('../../styles/global.scss')
@@ -11,7 +11,7 @@ if(process.browser) {
 const AppRouter = () => {
   return (
     <Fragment>
-      <Header />
+      <HeaderContainer />
       <div className='app-container'>
         <Switch>
             {
